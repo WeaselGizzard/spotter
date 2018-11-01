@@ -4,7 +4,7 @@ This repository contains the submission for the second project in the Udacity **
 
 HTML file is **spotter.html**, the CSS file is **css/spotter.css**, and the JavaScript file is **javascript/spotter.js**.  The **images** directory contains the images.  
 
-Preview at http://htmlpreview.github.io/?https://github.com/WeaselGizzard/project/blob/master/demo.html  or view at http://anesi.com/project/demo.html
+Preview at http://htmlpreview.github.io/?https://github.com/WeaselGizzard/spotter/blob/master/spotter.html  or view at http://anesi.com/project/demo.html
 
 The major goal was to produce something that looked like the design mockup, but with different images (though preserving aspect ratio and layout), and that would be adaptive to various device types, for which purpose a _flexbox_ layout was employed.
 
