@@ -11,7 +11,6 @@ window.addEventListener("load", function () {
 
     document.querySelector('.modal').addEventListener("click", function() {
         document.querySelector('.modal').style.display = "none";
-        clearInterval(tallyHo.elapsedVar);
       }
     );
 
@@ -47,7 +46,7 @@ function deal() {
 // counter.
 function elapsedTime() {
   document.querySelector('.total_time').innerHTML =
-    ((performance.now() - tallyHo.startTime) / 1000).toFixed(2);
+    ((performance.now() - tallyHo.startTime) / 1000).toFixed(1);
 }
 // This function is invoked by the event listener on the card tableau.
 // Event delegation is used, so we need to make sure it is an image being
@@ -140,9 +139,9 @@ function cleanUp(event) {
 // with end-of-game summary stats.
 function gameOver() {
   document.querySelector('.total_time').innerHTML =
-    ((performance.now() - tallyHo.startTime) / 1000).toFixed(2);
+    ((performance.now() - tallyHo.startTime) / 1000).toFixed(1);
 
-  clearInterval(tallyHo.elapsedVar);
+  tallyHo.stopTimer();
 
   document.querySelector('.modal_summary').innerHTML =
     document.querySelector('.result_span').innerHTML;
@@ -178,7 +177,7 @@ let tallyHo = {
         this.tries = 0;
         this.matches = 0;
         this.startTime = performance.now();
-        this.elapsedVar = window.setInterval(elapsedTime, 500);
+        this.elapsedVar = window.setInterval(elapsedTime, 100);
         //shuffle card deck.  See
         //https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array/2450976#2450976
         // for code source
@@ -193,5 +192,8 @@ let tallyHo = {
             this.cardDeck[currentIndex] = this.cardDeck[randomIndex];
             this.cardDeck[randomIndex] = temporaryValue;
          };
+    },
+    stopTimer: function() {
+      window.clearInterval(this.elapsedVar);
     }
 }
