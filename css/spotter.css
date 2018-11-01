@@ -134,7 +134,7 @@ div {
   box-sizing: border-box;
   padding: 0px;
   margin: 0px auto;
-  display: inline-block;  //for Safari
+  display: inline-block;
   }
 
   .star_rating {
