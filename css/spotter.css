@@ -118,18 +118,20 @@ div {
 
 .deal_button {
 	height: 25px;
-	width: 80px;
+	width: 100px;
 	font-size: 14px;
   font-weight: normal;
 	background-color: blue;
 	color: #FFFFFF;
 	vertical-align: middle;
-  padding-right: 5px;
 	border-radius: 5px;
-  border-width: 5px;
+  border-width: 3px;
   border-color: red;
-	line-height: 10px;
-  margin-right: 6px;
+  line-height: 14px;
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px auto;
+  display: inline-block;  //for Safari
   }
 
   .star_rating {
