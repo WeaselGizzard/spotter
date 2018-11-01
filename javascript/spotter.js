@@ -1,6 +1,8 @@
-// Javascript for F Scale
+// Javascript for Memory Game
 //
-// Add event listeners for page load and button actions
+// After page is loaded, add event listeners for card flips, deal button,
+// and modal hiding.  Then deal.
+//
 window.addEventListener("load", function () {
 
     document.querySelector('.tableau').addEventListener("click", cardFlip);
@@ -16,17 +18,21 @@ window.addEventListener("load", function () {
 
   }
 );
-// tallyHo.init() method initilializes all the tallyHo object variables,
-// shuffles the deck, and starts the timer. This function resets
-// styles and sets the progress variable displays to their Initilial
-// values.
+// This function is invoked on page load, or when the New Deal button is clicked.
+// It first calls the tallyHo.init() method to initilialize
+// all the tallyHo object variables, shuffle the deck, and start the timer.
+// It then resets styles (which will have changed during course of play)
+// and sets the tableau face images to their shuffled order,
+// then sets the progress variable displays to their initial display
+// values. (Which is not functionally necessary since they get updated on the
+// first click anyway, but they would look weird otherwise.)
 function deal() {
   tallyHo.init();
 
   let cards = document.querySelectorAll('.card_face');
   for (let i = 0; i < cards.length; i++) {
     cards[i].style.opacity = '0';
-    cards[i].style.border = '2px solid skyblue';
+    cards[i].style.border = '3px solid skyblue';
     cards[i].src = `images/${tallyHo.cardDeck[i]}`;
   };
 
@@ -36,26 +42,28 @@ function deal() {
   document.querySelector('.pairs_possible').innerHTML = "120";
 }
 //
-// This function is called from tallyHo.init() and displays elapsed time.
+// This function is invoked by tallyHo.init() and displays the elapsed time
+// counter.
 function elapsedTime() {
   document.querySelector('.total_time').innerHTML =
     ((performance.now() - tallyHo.startTime) / 1000).toFixed(2);
 }
-// Using event delegation, so need to make sure it is an image being
+// This function is invoked by the event listener on the card tableau.
+// Event delegation is used, so we need to make sure it is an image being
 // clicked.  If not, ignore. If so, but the card face is already visible,
 // do nothing.  Else make the face visible and suspend the event handler
 // (to keep the user from clicking on more cards until we've digested this
-// one.) Set brief timeout so browser can make the opacity change visible.
-// Then evaluate what the user did.
+// one.) Set a brief timeout so the browser can make the opacity change visible.
+// Then evaluate what the user did in function evalFlip.
 function cardFlip(event) {
   if (event.target.nodeName == 'IMG') {
     if (event.target.style.opacity != '1') {
-    event.target.style.opacity = '1';
-    document.querySelector('.tableau').removeEventListener("click", cardFlip)
-    tallyHo.currentEventTarget = event.target;
-    setTimeout(function () {
-       evalFlip(event);
-    }, 100);
+      event.target.style.opacity = '1';
+      document.querySelector('.tableau').removeEventListener("click", cardFlip)
+        setTimeout(function () {
+          evalFlip(event);
+        }, 100
+      );
     };
   };
 };
@@ -75,8 +83,8 @@ function evalFlip(event) {
   } else {
     if (event.target.src == tallyHo.lastEventTarget.src) {
       tallyHo.matches += 1;
-      event.target.style.border = '2px solid lightgreen';
-      tallyHo.lastEventTarget.style.border = '2px solid lightgreen';
+      event.target.style.border = '3px solid lightgreen';
+      tallyHo.lastEventTarget.style.border = '3px solid lightgreen';
       tallyHo.firstOfPair = true;
       cleanUp(event);
     }
@@ -169,7 +177,6 @@ let tallyHo = {
         this.tries = 0;
         this.matches = 0;
         this.startTime = performance.now();
-        this.elapsedVar = "";
         this.elapsedVar = window.setInterval(elapsedTime, 500);
         //shuffle card deck.  See
         //https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array/2450976#2450976
