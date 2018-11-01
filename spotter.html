@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<HTML lang="en">
+<head>
+  <title>WWII Aircraft Spotter Memory Game</title>
+  <meta name="description" content="Classic memory game using WWII aircraft spotter cards">
+  <meta name="keywords" content="World War II,aircraft,aircraft spotter,memory game">
+  <meta charset="UTF-8">
+  <meta name="author" content="Chuck Anesi">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="css/spotter.css">
+  <script src='javascript/spotter.js'></script>
+</head>
+<body>
+  <header class="header">
+    <div class="header_streamer">
+      <img class="header_logo" src="images/spotter.jpg" alt="Aircraft Spotter badge">
+      <br>
+      <a href="http://anesi.com/index.html">&#9776;Anesi.com</a>
+    </div>
+    <div class="header_text">
+      <h1 class="header_name">
+        SPOTTER
+      </h1>
+      <h4 class="header_metier">
+        World War II aircraft spotting game
+      </h4>
+    </div>
+  </header>
+  <div class="instructions">
+    <hr>
+    Click a card to flip it.  Then click another to find a match. If you
+    find a match the cards remain visible. Else they are hidden again.
+    Game ends when you match all pairs.  Truth, justice and the American
+    Way depend on you.
+    <div class="results">
+      <input class="deal_button" type="button" value="New Deal">
+      <span class="result_span">
+        Rating:
+        <span class="star_rating">
+        </span>
+        Tries:
+        <span class="tries">
+        </span>
+        Matches:
+        <span class="matches">
+        </span>
+        Remaining pair choices possible:
+        <span class="pairs_possible">
+        </span>
+        Total Time:
+        <span class="total_time">
+        </span>
+      </span>
+    </div>
+    <hr>
+  </div>
+  <div class="tableau">
+    <div class="tableau_row">
+      <div class="tableau_card">
+        <img class="card_back" src="images/b.jpg" alt="Back of WW II airplane spotter playing card">
+        <img class="card_face" src="images/c1.jpg" alt="Face of WW II airplane spotter playing card">
+      </div>
+      <div class="tableau_card">
+        <img class="card_back" src="images/b.jpg" alt="Back of WW II airplane spotter playing card">
+        <img class="card_face" src="images/c1.jpg" alt="Face of WW II airplane spotter playing card">
+      </div>
+      <div class="tableau_card">
+        <img class="card_back" src="images/b.jpg" alt="Back of WW II airplane spotter playing card">
+        <img class="card_face" src="images/d1.jpg" alt="Face of WW II airplane spotter playing card">
+      </div>
+      <div class="tableau_card">
+        <img class="card_back" src="images/b.jpg" alt="Back of WW II airplane spotter playing card">
+        <img class="card_face" src="images/d1.jpg" alt="Face of WW II airplane spotter playing card">
+      </div>
+    </div>
+    <div class="tableau_row">
+      <div class="tableau_card">
+        <img class="card_back" src="images/b.jpg" alt="Back of WW II airplane spotter playing card">
+        <img class="card_face" src="images/d7.jpg" alt="Face of WW II airplane spotter playing card">
+      </div>
+      <div class="tableau_card">
+        <img class="card_back" src="images/b.jpg" alt="Back of WW II airplane spotter playing card">
+        <img class="card_face" src="images/d7.jpg" alt="Face of WW II airplane spotter playing card">
+      </div>
+      <div class="tableau_card">
+        <img class="card_back" src="images/b.jpg" alt="Back of WW II airplane spotter playing card">
+        <img class="card_face" src="images/h1.jpg" alt="Face of WW II airplane spotter playing card">
+      </div>
+      <div class="tableau_card">
+        <img class="card_back" src="images/b.jpg" alt="Back of WW II airplane spotter playing card">
+        <img class="card_face" src="images/h1.jpg" alt="Face of WW II airplane spotter playing card">
+      </div>
+    </div>
+    <div class="tableau_row">
+      <div class="tableau_card">
+        <img class="card_back" src="images/b.jpg" alt="Back of WW II airplane spotter playing card">
+        <img class="card_face" src="images/h6.jpg" alt="Face of WW II airplane spotter playing card">
+      </div>
+      <div class="tableau_card">
+        <img class="card_back" src="images/b.jpg" alt="Back of WW II airplane spotter playing card">
+        <img class="card_face" src="images/h6.jpg" alt="Face of WW II airplane spotter playing card">
+      </div>
+      <div class="tableau_card">
+        <img class="card_back" src="images/b.jpg" alt="Back of WW II airplane spotter playing card">
+        <img class="card_face" src="images/c8.jpg" alt="Face of WW II airplane spotter playing card">
+      </div>
+      <div class="tableau_card">
+        <img class="card_back" src="images/b.jpg" alt="Back of WW II airplane spotter playing card">
+        <img class="card_face" src="images/c8.jpg" alt="Face of WW II airplane spotter playing card">
+      </div>
+    </div>
+    <div class="tableau_row">
+      <div class="tableau_card">
+        <img class="card_back" src="images/b.jpg" alt="Back of WW II airplane spotter playing card">
+        <img class="card_face" src="images/s1.jpg" alt="Face of WW II airplane spotter playing card">
+      </div>
+      <div class="tableau_card">
+        <img class="card_back" src="images/b.jpg" alt="Back of WW II airplane spotter playing card">
+        <img class="card_face" src="images/s1.jpg" alt="Face of WW II airplane spotter playing card">
+      </div>
+      <div class="tableau_card">
+        <img class="card_back" src="images/b.jpg" alt="Back of WW II airplane spotter playing card">
+        <img class="card_face" src="images/s4.jpg" alt="Face of WW II airplane spotter playing card">
+      </div>
+      <div class="tableau_card">
+        <img class="card_back" src="images/b.jpg" alt="Back of WW II airplane spotter playing card">
+        <img class="card_face" src="images/s4.jpg" alt="Face of WW II airplane spotter playing card">
+      </div>
+    </div>
+  </div>
+  <div class="modal">
+    <div class="modal_content">
+      <img src="images/spotter.jpg" alt="Aircraft Spotter badge">
+      <p>
+      Congratulations!  You have saved your country<br>
+      from hoards of Axis miscreants.
+      </p>
+      Final results:
+      <p class="modal_summary">
+      </p>
+      <p>
+      Click anywhere to close this modal.<br>
+      Then click the New Deal button to play again.
+      </p>
+    </div>
+  </div>
+  <footer>
+    <hr>
+    Contact information on <a href="http://anesi.com/index.html">main page.</a>
+    <br>
+    <em>&copy;Copyright 2018 Chuck Anesi all rights reserved</em>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,258 @@
+/* Common
+*
+*
+*/
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 16px;
+  color: #2d3c49;
+}
+
+img {
+      max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+  font-weight: normal;
+}
+
+header,
+section,
+div {
+  box-sizing: border-box;
+}
+/*
+* Media query to avoid excessive width on large screens
+* which makes things look stupid.
+*
+*/
+@media screen and (min-width: 850px) {
+
+  body {
+   	width: 850px;
+  	margin-left: auto;
+    margin-right: auto;
+  }
+
+  body .modal {
+   	width: 850px;
+    text-align: center;
+  	margin-left: auto;
+    margin-right: auto;
+  }
+
+}
+/*
+* Header
+*
+*/
+.header {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+.header_streamer {
+  margin-right: auto;
+}
+.header_streamer a {
+  margin-left: auto;
+  padding-left: 10px;
+  font-size: 12px;
+}
+.header_logo {
+  text-align: left;
+  max-height: 35px;
+  padding: 10px;
+  padding-top: 10px;
+  padding-bottom: 0;
+}
+
+.header_text {
+    text-align: right;
+    padding: 10px;
+    padding-bottom: 0;
+    margin-left: auto;
+}
+
+.header_name {
+  font-size: 2em;
+  font-weight: 100;
+  text-transform: uppercase;
+}
+
+.header_metier {
+  font-size: 1em;
+  font-weight: 300;
+}
+
+.header_hr {
+  padding-bottom: 0;
+}
+/* instructions
+*/
+.instructions {
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 14px;
+}
+/* Results -- game progress
+*/
+.results {
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+.deal_button {
+	height: 25px;
+	width: 80px;
+	font-size: 14px;
+  font-weight: normal;
+	background-color: blue;
+	color: #FFFFFF;
+	vertical-align: middle;
+  padding-right: 5px;
+	border-radius: 5px;
+  border-width: 5px;
+  border-color: red;
+	line-height: 10px;
+  margin-right: 6px;
+  }
+
+  .star_rating {
+  	color: gold;
+	}
+
+  .tries,
+  .matches,
+  .pairs_possible,
+  .total_time  {
+    color: blue;
+    margin-right: 5px;
+  }
+
+.tableau {
+  /*background-color: #38333a; */
+  background-color: skyblue;
+}
+
+.tableau_row {
+  background-color: inherit;
+  display: flex;
+  flex-wrap: nowrap;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.tableau_card {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* The user-drag prohibitions below prevent a cheating
+   user from dragging the ghost image of a card
+   that has not been flipped, and seeing its contents.
+   Height is set using vh to ensure that all cells fit
+   on the screen.
+*/
+.tableau_card img {
+  text-align: center;
+  height: 17vh;
+  border: 2px;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Face is on top but with opacity zero
+   This ensures that the event target
+   returned will be the card face image,
+   not the back, allowing a match to be
+   determined from the image source.
+*/
+.card_face {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+  border-style: solid;
+  border-width: 2px;
+  border-color: skyblue;
+  border-radius: 12px;
+}
+
+.card_back {
+  position: relative;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  border-style: solid;
+  border-width: 2px;
+  border-color: skyblue;
+  border-radius: 12px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: red;
+}
+
+footer {
+  text-align: center;
+  font-size: .9em;
+  color: #7d97ad;
+  margin-bottom: 20px;
+}
+
+footer a {
+  color: blue;
+}
+
+/* Modal css modified from
+  https://www.w3schools.com/howto/howto_css_modals.asp */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: auto;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal_content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    text-align: center;
+    font-size: 18px;
+}
