@@ -11,6 +11,7 @@ window.addEventListener("load", function () {
 
     document.querySelector('.modal').addEventListener("click", function() {
         document.querySelector('.modal').style.display = "none";
+        clearInterval(tallyHo.elapsedVar);
       }
     );
 
