@@ -1,8 +1,8 @@
-# Build a Portfolio Project
+# Memory Game Project
 
-This repository contains the submission for the first project in the Udacity **Front-End Web Developer** nanodegree course.
+This repository contains the submission for the second project in the Udacity **Front-End Web Developer** nanodegree course.
 
-HTML file is **demo.html** and the CSS file is **demo.css**.  The **images** directory contains the images.  
+HTML file is **spotter.html**, the CSS file is **css/spotter.css**, and the JavaScript file is **javascript/spotter.js**.  The **images** directory contains the images.  
 
 Preview at http://htmlpreview.github.io/?https://github.com/WeaselGizzard/project/blob/master/demo.html  or view at http://anesi.com/project/demo.html
 
