@@ -54,6 +54,9 @@ div {
     margin-right: auto;
   }
 
+  body .modal_content {
+    width: 60%;
+  }
 }
 /*
 * Header
@@ -176,7 +179,6 @@ div {
 .tableau_card img {
   text-align: center;
   height: 17vh;
-  border: 2px;
   user-select: none;
   -moz-user-select: none;
   -webkit-user-drag: none;
@@ -197,7 +199,7 @@ div {
   opacity: 0;
   z-index: 1;
   border-style: solid;
-  border-width: 2px;
+  border-width: 3px;
   border-color: skyblue;
   border-radius: 12px;
 }
@@ -208,7 +210,7 @@ div {
   left: 0;
   opacity: 1;
   border-style: solid;
-  border-width: 2px;
+  border-width: 3px;
   border-color: skyblue;
   border-radius: 12px;
 }
@@ -257,4 +259,7 @@ footer a {
     width: 80%; /* Could be more or less, depending on screen size */
     text-align: center;
     font-size: 18px;
+    border-radius: 20px;
+    border-width: 5px;
+    border-color: blue;
 }
