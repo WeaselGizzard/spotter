@@ -19,13 +19,16 @@ window.addEventListener("load", function () {
   }
 );
 // This function is invoked on page load, or when the New Deal button is clicked.
-// It first calls the tallyHo.init() method to initilialize
-// all the tallyHo object variables, shuffle the deck, and start the timer.
-// It then resets styles (which will have changed during course of play)
-// and sets the tableau face images to their shuffled order,
-// then sets the progress variable displays to their initial display
-// values. (Which is not functionally necessary since they get updated on the
-// first click anyway, but they would look weird otherwise.)
+// It first calls the tallyHo.init method to initilialize
+// all the tallyHo object variables, and shuffle the deck.
+// It then resets styles (which will have changed during course of play),
+// sets the tableau face images to their shuffled order, and
+// sets the progress variable displays to their initial display
+// values by calling progressUpdate.  Next it stops the timer, if
+// it is running, as it will be if the user clicks deal before finishing
+// the game. (Issuing another startTimer without first stopping will result
+// in multiple timers runnning and screw things up).  Finally, the timer
+// is started.
 function deal() {
   tallyHo.init();
 
@@ -36,17 +39,10 @@ function deal() {
     cards[i].src = `images/${tallyHo.cardDeck[i]}`;
   };
 
-  document.querySelector('.star_rating').innerHTML = "&#9733&#9733&#9733&#9733&#9733";
-  document.querySelector('.tries').innerHTML = "0";
-  document.querySelector('.matches').innerHTML = "0";
-  document.querySelector('.pairs_possible').innerHTML = "120";
-}
-//
-// This function is invoked by tallyHo.init() and displays the elapsed time
-// counter.
-function elapsedTime() {
-  document.querySelector('.total_time').innerHTML =
-    ((performance.now() - tallyHo.startTime) / 1000).toFixed(1);
+  progressUpdate();
+
+  tallyHo.stopTimer();
+  tallyHo.startTimer();
 }
 // This function is invoked by the event listener on the card tableau.
 // Event delegation is used, so we need to make sure it is an image being
@@ -114,6 +110,28 @@ function cleanUp(event) {
 
   document.querySelector('.tableau').addEventListener("click", cardFlip);
 
+  progressUpdate();
+
+  if (tallyHo.matches == 8) {
+    gameOver();
+  };
+}
+//
+//
+// at end of game, stop timer and display modal
+// with end-of-game summary stats.
+function gameOver() {
+  tallyHo.stopTimer();
+
+  document.querySelector('.modal_summary').innerHTML =
+    document.querySelector('.result_span').innerHTML;
+
+  document.querySelector('.modal').style.display = "block";
+}
+//
+// Update progress display.
+//
+function progressUpdate() {
   for (let i = 0; i < 5; i++)  {
     if (tallyHo.tries < tallyHo.starRating[i][0]) {
         document.querySelector('.star_rating').innerHTML =
@@ -129,26 +147,14 @@ function cleanUp(event) {
   document.querySelector('.pairs_possible').innerHTML =
     ( Math.pow(n,2) - n ) / 2;
 
-  if (tallyHo.matches == 8) {
-    gameOver();
-  };
 }
 //
-//
-// at end of game, compute final time, stop timer and display modal
-// with end-of-game summary stats.
-function gameOver() {
+// This function is invoked by the tallyHo.startTimer method and displays elapsed time
+// at 100 millisecond intervals continuously throughout the game.
+function elapsedTime() {
   document.querySelector('.total_time').innerHTML =
     ((performance.now() - tallyHo.startTime) / 1000).toFixed(1);
-
-  tallyHo.stopTimer();
-
-  document.querySelector('.modal_summary').innerHTML =
-    document.querySelector('.result_span').innerHTML;
-
-  document.querySelector('.modal').style.display = "block";
 }
-//
 //
 // Object for keeping track of last event, firstOfPair, tries,
 // matches, time, and array from which tableau is populated.
@@ -176,9 +182,6 @@ let tallyHo = {
         this.firstOfPair = true;
         this.tries = 0;
         this.matches = 0;
-        this.startTime = performance.now();
-        window.clearInterval(this.elapsedVar);  // No exception is thrown if an interval is not associated with this.elapsedVar. See MDN.
-        this.elapsedVar = window.setInterval(elapsedTime, 100);
         //shuffle card deck.  See
         //https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array/2450976#2450976
         // for code source
@@ -194,7 +197,13 @@ let tallyHo = {
             this.cardDeck[randomIndex] = temporaryValue;
          };
     },
-    stopTimer: function() {
-      window.clearInterval(this.elapsedVar);
-    }
+  startTimer: function() {
+    this.startTime = performance.now();
+    this.elapsedVar = window.setInterval(elapsedTime, 100);
+  },
+  // No exception is thrown if a setInterval is not associated with this.elapsedVar. See MDN.
+  // This will be the case if stopTimer is called by the deal function on initial page load.
+  stopTimer: function() {
+    window.clearInterval(this.elapsedVar);
+  }
 }
