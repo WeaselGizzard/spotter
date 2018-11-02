@@ -59,8 +59,8 @@ function cardFlip(event) {
   if (event.target.nodeName == 'IMG') {
     if (event.target.style.opacity != '1') {
       event.target.style.opacity = '1';
-      document.querySelector('.tableau').removeEventListener("click", cardFlip)
-        setTimeout(function () {
+      document.querySelector('.tableau').removeEventListener("click", cardFlip);
+      setTimeout(function () {
           evalFlip(event);
         }, 100
       );
@@ -177,6 +177,7 @@ let tallyHo = {
         this.tries = 0;
         this.matches = 0;
         this.startTime = performance.now();
+        window.clearInterval(this.elapsedVar);
         this.elapsedVar = window.setInterval(elapsedTime, 100);
         //shuffle card deck.  See
         //https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array/2450976#2450976
